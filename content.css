@@ -1,0 +1,78 @@
+#yls-subtitle-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  font-size: var(--yls-font-size, 30px);
+}
+
+#yls-subtitle-box {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: visible;
+}
+
+#yls-subtitle-text {
+  max-width: 100%;
+  padding: 0.14em 0.5em;
+  border-radius: 6px;
+  line-height: 1.35;
+  text-align: center;
+  white-space: pre-line;
+  font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* 播放中：無邊框 */
+#yls-subtitle-overlay.yls-theme-dark #yls-subtitle-text {
+  color: #ffe8c9;
+  background: rgba(24, 13, 3, var(--yls-bg-alpha, 0.55));
+  text-shadow: 0 0 6px rgba(255, 120, 20, 0.5), 0 1px 2px rgba(0, 0, 0, 0.85);
+}
+
+#yls-subtitle-overlay.yls-theme-light #yls-subtitle-text {
+  color: #2a1b0c;
+  background: rgba(255, 248, 238, var(--yls-bg-alpha, 0.6));
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* 調整模式：顯示可縮放的外框 */
+#yls-subtitle-box.yls-edit {
+  pointer-events: auto;
+  cursor: move;
+  background: rgba(255, 138, 30, 0.08);
+  outline: 1px dashed rgba(255, 138, 30, 0.95);
+}
+
+#yls-subtitle-box.yls-edit.yls-dragging {
+  cursor: grabbing;
+}
+
+#yls-subtitle-box .yls-handle {
+  display: none;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  margin: -6px;
+  background: #ff8a1e;
+  border: 1px solid #241000;
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(255, 138, 30, 0.8);
+}
+
+#yls-subtitle-box.yls-edit .yls-handle {
+  display: block;
+}
+
+#yls-subtitle-box .yls-handle[data-dir="nw"] { left: 0; top: 0; cursor: nwse-resize; }
+#yls-subtitle-box .yls-handle[data-dir="n"] { left: 50%; top: 0; cursor: ns-resize; }
+#yls-subtitle-box .yls-handle[data-dir="ne"] { left: 100%; top: 0; cursor: nesw-resize; }
+#yls-subtitle-box .yls-handle[data-dir="e"] { left: 100%; top: 50%; cursor: ew-resize; }
+#yls-subtitle-box .yls-handle[data-dir="se"] { left: 100%; top: 100%; cursor: nwse-resize; }
+#yls-subtitle-box .yls-handle[data-dir="s"] { left: 50%; top: 100%; cursor: ns-resize; }
+#yls-subtitle-box .yls-handle[data-dir="sw"] { left: 0; top: 100%; cursor: nesw-resize; }
+#yls-subtitle-box .yls-handle[data-dir="w"] { left: 0; top: 50%; cursor: ew-resize; }
